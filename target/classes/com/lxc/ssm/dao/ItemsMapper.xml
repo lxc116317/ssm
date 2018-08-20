@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lxc.ssm.dao.ItemsMapper">
+	<select id="findItemsById" parameterType="Integer" resultType="com.lxc.ssm.pojo.ItemsCustom">
+		     SELECT
+            `items`.`id`,`items`.`name`,`items`.`price`,`items`.`detail`,`items`.`createtime`
+          FROM
+            `items`
+          WHERE id = #{id}
+	</select>
+	
+	<select id="getItemsList" parameterType="com.lxc.ssm.pojo.ItemsQueryVo"
+			resultType="com.lxc.ssm.pojo.ItemsCustom">
+					
+		 SELECT * FROM `items` 
+	</select>
+	
+	<select id="updateItemsByPrimaryKeyBlobs" parameterType="integer" resultType="com.lxc.ssm.pojo.ItemsCustom">
+	 UPDATE items
+     SET 
+     	 items.`name`=#{name},
+	     items.`price`=#{price},
+	     items.`detail`=#{detail},
+	     items.`pic`=#{pic},
+	     items.`createtime`=#{createTime}
+	 WHERE id=#{id}
+	
+	
+	</select>
+
+</mapper>
